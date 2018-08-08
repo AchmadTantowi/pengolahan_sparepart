@@ -65,6 +65,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/received', 'Admin\ReceivedController@index');
     Route::get('/received/add', 'Admin\ReceivedController@add');
     Route::post('/received/save', 'Admin\ReceivedController@save');
+    Route::get('/received/print/{id}', 'Admin\ReceivedController@print');
 
     // LAPORAN
     Route::get('/laporan', 'Admin\LaporanController@index');

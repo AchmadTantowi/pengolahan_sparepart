@@ -24,9 +24,8 @@
                 <tr>
                   <th>No</th>
                   <th>Invoice</th>
-                  <th>Nama Part</th>
                   <th>Supplier</th>
-                  <th>Jml Barang</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,9 +34,12 @@
                 <tr>
                   <td>{{ $no++ }}</td>
                   <td>{{ $data->no_invoice}}</td>
-                  <td>{{ $data->nama_part }}</td>
                   <td>{{ $data->nama }}</td>
-                  <td>{{ $data->jml_barang }}</td>
+                  <td>
+                    <a href="{{ url('/admin/received/print/') }}/{{$data->id}}" target="_blank">
+                      <i class="fa fa-print"></i> Print 
+                  </a>
+                  </td>
                 </tr>
                 @endforeach
                 </tbody>

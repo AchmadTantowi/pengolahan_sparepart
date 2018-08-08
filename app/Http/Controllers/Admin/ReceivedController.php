@@ -27,8 +27,10 @@ class ReceivedController extends Controller
         $datas = DB::table('received_parts')
         ->leftJoin('suppliers', 'received_parts.supplier_id', '=', 'suppliers.id')
         ->leftJoin('spareparts', 'received_parts.kode_part', '=', 'spareparts.kode_part')
-        ->select('received_parts.no_invoice', 'spareparts.nama_part', 'suppliers.nama', 'received_parts.jml_barang')
+        ->select('received_parts.id','received_parts.no_invoice', 'spareparts.nama_part', 'suppliers.nama', 'received_parts.jml_barang')
+        ->groupBy('received_parts.no_invoice')
         ->get();
+
         return view('admin.received.index', compact('datas'));
     }
 
@@ -58,24 +60,36 @@ class ReceivedController extends Controller
     }
 
     public function save(Request $request){
-        $this->validate($request, [
-            'kode_part' => 'required',
-            'supplier' => 'required',
-            'jumlah_barang' => 'required',
-        ]);
+        if($request->ajax()){
+            $kode_part = $request->kode_part;
+            for($i = 0;$i < count($kode_part);$i++){
+                $received = ReceivedPart::create([
+                    'no_invoice' => $request->no_invoice,
+                    'kode_part' => $kode_part[$i],
+                    'supplier_id' => $request->supplier,
+                    'jml_barang' => $request->jumlah_barang[$i]
+                ]);
+            }
 
-        $received = ReceivedPart::create([
-            'no_invoice' => $request->get('no_invoice'),
-            'kode_part' => $request->get('kode_part'),
-            'supplier_id' => $request->get('supplier'),
-            'jml_barang' => $request->get('jumlah_barang')
-          ]);
-        if($received){
-            alert()->success('Success','Saved');
-            return redirect('/admin/received');
-        }
+    		return response()->json(['return'=>'ok']);
+    	}
     }
 
-   
+    public function print($id){
+        // $request_spareparts = RequestSparepart::where('id','=',$id)->first();
+        $received_spareparts = DB::table('received_parts')
+        ->leftJoin('suppliers', 'suppliers.id', '=', 'received_parts.supplier_id')
+        ->select('received_parts.no_invoice', 'suppliers.nama as nama_supplier', 'received_parts.created_at as tgl_terima')
+        ->where('received_parts.id','=',$id)
+        ->first();
+
+        $listSpareparts = DB::table('spareparts')
+        ->leftJoin('received_parts', 'received_parts.kode_part', '=', 'spareparts.kode_part')
+        ->select('spareparts.kode_part', 'spareparts.nama_part')
+        ->where('received_parts.no_invoice','=',$received_spareparts->no_invoice)
+        ->get();
+        // dd($listSpareparts);
+        return view('admin.received.print', compact('received_spareparts', 'listSpareparts'));
+    }
 
 }
