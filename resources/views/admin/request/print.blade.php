@@ -73,6 +73,7 @@
                         <th>No</th>
                         <th>Kode Part</th>
                         <th>Nama Part</th>
+                        <th>Jumlah</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -82,6 +83,7 @@
                     <td>{{ $no++ }}</td>
                     <td>{{ $listSparepart->kode_part }}</td>
                     <td>{{ $listSparepart->nama_part}}</td>
+                    <td>{{ $listSparepart->jumlah}}</td>
                 </tr>
                 @endforeach
                 </tbody>

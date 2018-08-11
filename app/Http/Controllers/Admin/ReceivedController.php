@@ -89,7 +89,7 @@ class ReceivedController extends Controller
 
         $listSpareparts = DB::table('spareparts')
         ->leftJoin('received_parts', 'received_parts.kode_part', '=', 'spareparts.kode_part')
-        ->select('spareparts.kode_part', 'spareparts.nama_part')
+        ->select('spareparts.kode_part', 'spareparts.nama_part','received_parts.jml_barang')
         ->where('received_parts.no_invoice','=',$received_spareparts->no_invoice)
         ->get();
         // dd($listSpareparts);

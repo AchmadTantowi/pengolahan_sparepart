@@ -36,7 +36,7 @@
               <div class="box-body">
                 <div class="form-group">
                     <label for="exampleInputEmail1">NIK</label>
-                    <input type="text" name="nik" class="form-control" id="exampleInputEmail1" value="{{ $users->nik }}">
+                    <input type="text" name="nik" class="form-control" id="exampleInputEmail1" value="{{ $users->nik }}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>

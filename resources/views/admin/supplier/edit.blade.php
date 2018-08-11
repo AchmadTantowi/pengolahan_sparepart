@@ -35,8 +35,8 @@
             {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Supplier</label>
-                    <input type="text" name="nama" class="form-control" id="exampleInputEmail1" value="{{ $supplier->nama }}" readonly>
+                    <label for="exampleInputEmail1">Nama Supplier</label>
+                    <input type="text" name="nama" class="form-control" id="exampleInputEmail1" value="{{ $supplier->nama }}">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Alamat</label>

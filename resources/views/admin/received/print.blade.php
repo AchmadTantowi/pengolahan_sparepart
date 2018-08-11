@@ -51,13 +51,14 @@
                 
             </table>
             <hr>
-            <h3 align="center"><b><u>Daftar Sparepart</u></b></h3>
+            <h3 align="center"><b><u>Daftar Sparepart Penerimaan</u></b></h3>
             <table id="parts" align="center">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Kode Part</th>
                         <th>Nama Part</th>
+                        <th>Jumlah</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,6 +68,7 @@
                     <td>{{ $no++ }}</td>
                     <td>{{ $listSparepart->kode_part }}</td>
                     <td>{{ $listSparepart->nama_part}}</td>
+                    <td>{{ $listSparepart->jml_barang}}</td>
                 </tr>
                 @endforeach
                 </tbody>

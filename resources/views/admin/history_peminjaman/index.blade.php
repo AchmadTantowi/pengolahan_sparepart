@@ -25,7 +25,7 @@
                   <th>Nama Barang</th>
                   <th>Jumlah</th>
                   <th>Status</th>
-                  {{-- <th>Action</th> --}}
+                  <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,11 +36,11 @@
                   <td>{{ $list->kode_part}}</td>
                   <td>{{ $list->jumlah }}</td>
                   <td><small class="label bg-green">{{ $list->status }}</small></td>
-                  {{-- <td>
-                        <a href="#" target="_blank">
-                            <i class="fa fa-print"></i> Print 
+                  <td>
+                        <a href="/admin/lihat-peminjaman/{{$list->id}}">
+                            Lihat Peminjaman 
                         </a>
-                  </td> --}}
+                  </td>
                 </tr>
                 @endforeach
                 </tbody>

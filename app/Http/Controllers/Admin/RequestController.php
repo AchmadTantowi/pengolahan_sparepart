@@ -86,7 +86,7 @@ class RequestController extends Controller
 
         $listSpareparts = DB::table('spareparts')
         ->leftJoin('request_spareparts', 'request_spareparts.kode_part', '=', 'spareparts.kode_part')
-        ->select('spareparts.kode_part', 'spareparts.nama_part')
+        ->select('spareparts.kode_part', 'spareparts.nama_part','request_spareparts.jumlah')
         ->where('request_spareparts.no_request','=',$request_spareparts->no_request)
         ->get();
         // dd($listSpareparts);

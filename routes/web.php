@@ -79,6 +79,7 @@ Route::prefix('admin')->group(function () {
 
     // HISTORY
     Route::get('/history-peminjaman', 'Admin\HistoryPeminjamanController@index');
+    Route::get('/lihat-peminjaman/{id}', 'Admin\HistoryPeminjamanController@lihatPeminjaman');
 
 });
 
