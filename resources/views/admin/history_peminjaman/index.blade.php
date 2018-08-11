@@ -22,9 +22,9 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Nama Barang</th>
+                  <th>No Request</th>
                   <th>Jumlah</th>
-                  <th>Status</th>
+                  {{-- <th>Status</th> --}}
                   <th>Aksi</th>
                 </tr>
                 </thead>
@@ -33,8 +33,8 @@
                 @foreach($lists as $list)
                 <tr>
                   <td>{{ $no++ }}</td>
-                  <td>{{ $list->kode_part}}</td>
-                  <td>{{ $list->jumlah }}</td>
+                  <td>{{ $list->no_request}}</td>
+                  {{-- <td>{{ $list->jumlah }}</td> --}}
                   <td><small class="label bg-green">{{ $list->status }}</small></td>
                   <td>
                         <a href="/admin/lihat-peminjaman/{{$list->id}}">
