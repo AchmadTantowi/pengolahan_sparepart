@@ -1,5 +1,29 @@
 @extends('admin.layouts.app')
 @section('css')
+<style>
+  #parts {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 60%;
+  }
+
+  #parts td, #parts th {
+      border: 1px solid #ddd;
+      padding: 8px;
+  }
+
+  #parts tr:nth-child(even){background-color: #f2f2f2;}
+
+  #parts tr:hover {background-color: #ddd;}
+
+  #parts th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #FE980F;
+      color: white;
+  }
+</style>
 @stop
 @section('content')
 <div class="content-wrapper">
@@ -31,37 +55,55 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" method="POST" action="/admin/request/update/{{ $getRequest->id }}">
+            <form role="form" method="POST" action="/admin/request/update/{{ $request_spareparts->no_request }}">
             {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
-                <label for="exampleInputEmail1">Karyawan</label>
-                <select class="form-control" name="nik">
-                    @foreach($users as $user)
-                        <option value="{{ $user->nik }}" {{ $user->nik == $getRequest->nik ? 'selected':'' }}>{{ $user->name }}</option>
-                    @endforeach
-                </select>
+                <label for="exampleInputEmail1">NIK</label>
+                <input type="text" name="nik" class="form-control" id="exampleInputEmail1" value="{{ $request_spareparts->nik }}" readonly>
                 </div>
                 <div class="form-group">
-                <label for="exampleInputEmail1">Sparepart</label>
-                <select class="form-control" name="kode_part">
-                    @foreach($spareparts as $sparepart)
-                        <option value="{{ $sparepart->kode_part }}" {{ $sparepart->kode_part == $getRequest->kode_part ? 'selected':'' }}>{{ $sparepart->nama_part }}</option>
-                    @endforeach
-                </select>
+                <label for="exampleInputEmail1">Nama Karyawan</label>
+                <input type="text" name="nama" class="form-control" id="exampleInputEmail1" value="{{ $request_spareparts->name }}" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Jumlah</label>
-                    <input type="text" name="jumlah" class="form-control" id="exampleInputEmail1" value="{{ $getRequest->jumlah }}">
+                    <label for="exampleInputEmail1">Nama Mesin</label>
+                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" value="{{ $request_spareparts->name }}" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Status</label>
-                    <select class="form-control" name="status">
-                        <option {{ $getRequest->status == 'Awaiting' ? 'selected':'' }}>Awaiting</option>
-                        <option {{ $getRequest->status == 'Accept' ? 'selected':'' }}>Accept</option>
-                        <option {{ $getRequest->status == 'Canceled' ? 'selected':'' }}>Canceled</option>
-                    </select>
+                  <label for="exampleInputEmail1">Tanggal Request</label>
+                  <input type="text" name="tgl" class="form-control" id="exampleInputEmail1" value="{{ $request_spareparts->tgl }}" readonly>
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Status</label>
+                  <select class="form-control" name="status">
+                      <option {{ $request_spareparts->status == 'Awaiting' ? 'selected':'' }}>Awaiting</option>
+                      <option {{ $request_spareparts->status == 'Accept' ? 'selected':'' }}>Accept</option>
+                      <option {{ $request_spareparts->status == 'Canceled' ? 'selected':'' }}>Canceled</option>
+                  </select>
+                </div>
+              <h3 align="center"><b><u>Daftar Sparepart</u></b></h3>
+              <table id="parts" align="center">
+                  <thead>
+                      <tr>
+                          <th>No</th>
+                          <th>Kode Part</th>
+                          <th>Nama Part</th>
+                          <th>Jumlah</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  @php($no = 1)
+                  @foreach($listSpareparts as $listSparepart)
+                  <tr>
+                      <td>{{ $no++ }}</td>
+                      <td>{{ $listSparepart->kode_part }}</td>
+                      <td>{{ $listSparepart->nama_part}}</td>
+                      <td>{{ $listSparepart->jumlah}}</td>
+                  </tr>
+                  @endforeach
+                  </tbody>
+              </table>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">

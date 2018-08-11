@@ -37,25 +37,40 @@ class RequestController extends Controller
         if(Auth::user()->role != "admin"){
             abort(404);
         }
-        $users = User::get();
-        $spareparts = Sparepart::get();
-        $getRequest = RequestSparepart::where('id', $id)->first();
+
+        $request_spareparts = DB::table('request_spareparts')
+        ->leftJoin('users', 'users.nik', '=', 'request_spareparts.nik')
+        ->leftJoin('mesins', 'mesins.id', '=', 'request_spareparts.mesin_id')
+        ->select('request_spareparts.no_request', 'request_spareparts.jumlah', 'request_spareparts.date as tgl', 'users.name', 'users.nik', 'mesins.nama', 'request_spareparts.status', 'request_spareparts.status_request','request_spareparts.id')
+        ->where('request_spareparts.id','=',$id)
+        ->first();
+
+        $listSpareparts = DB::table('spareparts')
+        ->leftJoin('request_spareparts', 'request_spareparts.kode_part', '=', 'spareparts.kode_part')
+        ->select('spareparts.kode_part', 'spareparts.nama_part','request_spareparts.jumlah')
+        ->where('request_spareparts.no_request','=',$request_spareparts->no_request)
+        ->get();
         
-        return view('admin.request.edit', compact('getRequest','users','spareparts'));
+        return view('admin.request.edit', compact('spareparts','request_spareparts','listSpareparts'));
     }
 
     public function update($id, Request $request){
         if(Auth::user()->role != "admin"){
             abort(404);
         }
-        // dd($id);
-        $data = RequestSparepart::find($id);
-        $data->nik = $request->get('nik');
-        $data->kode_part = $request->get('kode_part');
-        $data->jumlah = $request->get('jumlah');
-        $data->status = $request->get('status');
-       
-        $data->save();
+        $data = RequestSparepart::where('no_request', $id)->get();
+        DB::table('request_spareparts')
+        ->where('no_request', $data[0]['no_request'])
+        ->update(['status' => $request->get('status')]);
+
+        if($request->get('status') == 'Accept'){
+            for ($i=0; $i < count($data); $i++) {
+                $getPart = Sparepart::where('kode_part', $data[$i]['kode_part'])->first();
+                $getPart->stok = $getPart->stok - $data[$i]['jumlah'];
+                $getPart->save();
+            }
+        } 
+
         alert()->success('Updated','Successfully');
         return redirect('/admin/request');
     }

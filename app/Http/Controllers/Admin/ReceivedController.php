@@ -69,6 +69,10 @@ class ReceivedController extends Controller
                     'supplier_id' => $request->supplier,
                     'jml_barang' => $request->jumlah_barang[$i]
                 ]);
+
+                $getPart = Sparepart::where('kode_part', $kode_part[$i])->first();
+                $getPart->stok = $getPart->stok + $request->jumlah_barang[$i];
+                $getPart->save();
             }
 
     		return response()->json(['return'=>'ok']);
