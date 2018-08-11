@@ -38,14 +38,14 @@
                   <td>{{ $sparepart->kode_part }}</td>
                   <td>{{ $sparepart->nama_part }}</td>
                   <td>{{ $sparepart->stok }}</td>
-                  <td>{{ $sparepart->harga }}</td>
+                  <td>Rp. {{ number_format($sparepart->harga,0, ',' , '.') }}</td>
                   <td>
-                    {{-- <a href="/admin/content/edit/{{ $content->id }}">
+                    <a href="/admin/sparepart/edit/{{ $sparepart->id }}">
                     Edit
                     </a> |
-                    <a href="/admin/content/delete/{{ $content->id }}">
+                    <a href="/admin/sparepart/delete/{{ $sparepart->id }}">
                     Delete
-                    </a> --}}
+                    </a>
                   </td>
                 </tr>
                 @endforeach

@@ -26,7 +26,7 @@
                   <th>Nik</th>
                   <th>Nama</th>
                   <th>Email</th>
-                  <th>Divisi</th>
+                  {{-- <th>Divisi</th> --}}
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -38,14 +38,14 @@
                   <td>{{ $user->nik }}</td>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
-                  <td>{{ $user->divisi }}</td>
+                  {{-- <td>{{ $user->divisi }}</td> --}}
                   <td>
-                    {{-- <a href="/admin/content/edit/{{ $content->id }}">
+                    <a href="/admin/user/edit/{{ $user->id }}">
                     Edit
                     </a> |
-                    <a href="/admin/content/delete/{{ $content->id }}">
+                    <a href="/admin/user/delete/{{ $user->id }}">
                     Delete
-                    </a> --}}
+                    </a>
                   </td>
                 </tr>
                 @endforeach

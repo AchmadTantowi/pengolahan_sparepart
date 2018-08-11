@@ -27,33 +27,33 @@ Route::prefix('admin')->group(function () {
     Route::get('/user', 'Admin\UserController@index');
     Route::get('/user/add', 'Admin\UserController@add');
     Route::post('/user/save', 'Admin\UserController@save');
-    // Route::get('/user/edit/{id}', 'Admin\UserController@edit');
-    // Route::get('/user/delete/{id}', 'Admin\UserController@delete');
-    // Route::post('/user/edit/{id}', 'Admin\UserController@update');
+    Route::get('/user/edit/{id}', 'Admin\UserController@edit');
+    Route::get('/user/delete/{id}', 'Admin\UserController@delete');
+    Route::post('/user/update/{id}', 'Admin\UserController@update');
 
     // MASTER MESIN
     Route::get('/mesin', 'Admin\MesinController@index');
     Route::get('/mesin/add', 'Admin\MesinController@add');
     Route::post('/mesin/save', 'Admin\MesinController@save');
-    // Route::get('/mesin/edit/{id}', 'Admin\MesinController@edit');
-    // Route::get('/mesin/delete/{id}', 'Admin\MesinController@delete');
-    // Route::post('/mesin/edit/{id}', 'Admin\MesinController@update');
+    Route::get('/mesin/edit/{id}', 'Admin\MesinController@edit');
+    Route::get('/mesin/delete/{id}', 'Admin\MesinController@delete');
+    Route::post('/mesin/update/{id}', 'Admin\MesinController@update');
 
     // MASTER SPAREPART
     Route::get('/sparepart', 'Admin\SparepartController@index');
     Route::get('/sparepart/add', 'Admin\SparepartController@add');
     Route::post('/sparepart/save', 'Admin\SparepartController@save');
-    // Route::get('/sparepart/edit/{id}', 'Admin\SparepartController@edit');
-    // Route::get('/sparepart/delete/{id}', 'Admin\SparepartController@delete');
-    // Route::post('/sparepart/edit/{id}', 'Admin\SparepartController@update');
+    Route::get('/sparepart/edit/{id}', 'Admin\SparepartController@edit');
+    Route::get('/sparepart/delete/{id}', 'Admin\SparepartController@delete');
+    Route::post('/sparepart/update/{id}', 'Admin\SparepartController@update');
 
     // MASTER SUPPLIER
     Route::get('/supplier', 'Admin\SupplierController@index');
     Route::get('/supplier/add', 'Admin\SupplierController@add');
     Route::post('/supplier/save', 'Admin\SupplierController@save');
-    // Route::get('/supplier/edit/{id}', 'Admin\SupplierController@edit');
-    // Route::get('/supplier/delete/{id}', 'Admin\SupplierController@delete');
-    // Route::post('/supplier/edit/{id}', 'Admin\SupplierController@update');
+    Route::get('/supplier/edit/{id}', 'Admin\SupplierController@edit');
+    Route::get('/supplier/delete/{id}', 'Admin\SupplierController@delete');
+    Route::post('/supplier/update/{id}', 'Admin\SupplierController@update');
 
     // REQUEST SPAREPART
     Route::get('/request', 'Admin\RequestController@index');
@@ -69,6 +69,7 @@ Route::prefix('admin')->group(function () {
 
     // LAPORAN
     Route::get('/laporan', 'Admin\LaporanController@index');
+    Route::post('/laporan/print', 'Admin\LaporanController@print');
 
     #### MEKANIK ####
     

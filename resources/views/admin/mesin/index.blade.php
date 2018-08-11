@@ -36,12 +36,12 @@
                   <td>{{ $mesin->nama }}</td>
                   <td>{{ $mesin->keterangan }}</td>
                   <td>
-                    {{-- <a href="/admin/content/edit/{{ $content->id }}">
+                    <a href="/admin/mesin/edit/{{ $mesin->id }}">
                     Edit
                     </a> |
-                    <a href="/admin/content/delete/{{ $content->id }}">
+                    <a href="/admin/mesin/delete/{{ $mesin->id }}">
                     Delete
-                    </a> --}}
+                    </a>
                   </td>
                 </tr>
                 @endforeach

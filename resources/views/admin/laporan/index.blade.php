@@ -6,14 +6,14 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>Laporan</h1>
+      <h1>Laporan Kerusakan Mesin</h1>
     </section>
     <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-md-12">
         
-        <form method="POST" action="/admin/received/save">
+        <form method="POST" action="/admin/laporan/print" target="_blank">
               {{ csrf_field() }}
           <div class="box box-info">
             <!-- /.box-header -->
@@ -27,7 +27,7 @@
                     <label for="exampleInputEmail1">Sampai tanggal</label>
                     <input type="date" name="end_date" class="form-control" id="exampleInputEmail1">
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="exampleInputEmail1">Status Request</label>
                     <select name="status" class="form-control">
                         <option value="All">All</option>
@@ -35,7 +35,7 @@
                         <option value="Accept">Accept</option>
                         <option value="Canceled">Canceled</option>
                     </select>
-                </div>
+                </div> --}}
               </div>
             </div>
             <div class="box-footer">

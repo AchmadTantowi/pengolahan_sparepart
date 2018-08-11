@@ -48,4 +48,40 @@ class MesinController extends Controller
         }
     }
 
+    public function edit($id)
+    {
+        if(Auth::user()->role != "admin"){
+            abort(404);
+        }
+        $mesin = Mesin::where('id', $id)->first();
+        
+        return view('admin.mesin.edit', compact('mesin'));
+    }
+
+    public function update($id, Request $request){
+        if(Auth::user()->role != "admin"){
+            abort(404);
+        }
+        // dd($id);
+        $data = Mesin::find($id);
+        $data->nama = $request->get('nama');
+        $data->keterangan = $request->get('keterangan');
+       
+        $data->save();
+        alert()->success('Updated','Successfully');
+        return redirect('/admin/mesin');
+    }
+
+    public function delete($id){
+        if(Auth::user()->role != "admin"){
+            abort(404);
+        }
+        $data = Mesin::find($id);
+        $data->delete();
+        if($data){
+            alert()->success('Deleted','Successfully');
+            return redirect('/admin/mesin');
+        }
+    }
+
 }

@@ -50,4 +50,41 @@ class SupplierController extends Controller
         }
     }
 
+    public function edit($id)
+    {
+        if(Auth::user()->role != "admin"){
+            abort(404);
+        }
+        $supplier = Supplier::where('id', $id)->first();
+        
+        return view('admin.supplier.edit', compact('supplier'));
+    }
+
+    public function update($id, Request $request){
+        if(Auth::user()->role != "admin"){
+            abort(404);
+        }
+        // dd($id);
+        $data = Supplier::find($id);
+        $data->nama = $request->get('nama');
+        $data->alamat = $request->get('alamat');
+        $data->telepon = $request->get('telepon');
+       
+        $data->save();
+        alert()->success('Updated','Successfully');
+        return redirect('/admin/supplier');
+    }
+
+    public function delete($id){
+        if(Auth::user()->role != "admin"){
+            abort(404);
+        }
+        $data = Supplier::find($id);
+        $data->delete();
+        if($data){
+            alert()->success('Deleted','Successfully');
+            return redirect('/admin/supplier');
+        }
+    }
+
 }

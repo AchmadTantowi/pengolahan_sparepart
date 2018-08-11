@@ -61,7 +61,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ Request::is('admin/laporan') ? 'active' : '' }}"><a href="{{ url('/admin/laporan') }}"><i class="fa fa-circle-o"></i> Request Barang</a></li>
+            <li class="{{ Request::is('admin/laporan') ? 'active' : '' }}"><a href="{{ url('/admin/laporan') }}"><i class="fa fa-circle-o"></i> Kerusakan Mesin</a></li>
           </ul>
         </li>
         @endif

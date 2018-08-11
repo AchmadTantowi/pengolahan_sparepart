@@ -46,10 +46,10 @@
                     <label for="exampleInputEmail1">Password</label>
                     <input type="password" name="password" class="form-control" id="exampleInputEmail1">
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="exampleInputEmail1">Divisi</label>
                     <input type="text" name="divisi" class="form-control" id="exampleInputEmail1">
-                </div>
+                </div> --}}
               </div>
             </div>
             <div class="box-footer">

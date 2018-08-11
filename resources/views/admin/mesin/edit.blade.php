@@ -31,24 +31,16 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" method="POST" action="/admin/sparepart/update/{{ $sparepart->id }}">
+            <form role="form" method="POST" action="/admin/mesin/update/{{ $mesin->id }}">
             {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Kode Part</label>
-                    <input type="text" name="kode_part" class="form-control" id="exampleInputEmail1" value="{{ $sparepart->kode_part }}" readonly>
+                    <label for="exampleInputEmail1">Nama</label>
+                    <input type="text" name="nama" class="form-control" id="exampleInputEmail1" value="{{ $mesin->nama }}">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Nama Part</label>
-                    <input type="text" name="nama_part" class="form-control" id="exampleInputEmail1" value="{{ $sparepart->nama_part }}">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Stok</label>
-                    <input type="text" name="stok" class="form-control" id="exampleInputEmail1" value="{{ $sparepart->stok }}">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Harga</label>
-                    <input type="text" name="harga" class="form-control" id="exampleInputEmail1" value="{{ $sparepart->harga }}">
+                    <label for="exampleInputEmail1">Keterangan</label>
+                    <input type="text" name="keterangan" class="form-control" id="exampleInputEmail1" value="{{ $mesin->keterangan }}">
                 </div>
               </div>
               <!-- /.box-body -->

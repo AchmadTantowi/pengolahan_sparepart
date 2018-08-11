@@ -38,12 +38,12 @@
                   <td>{{ $supplier->alamat }}</td>
                   <td>{{ $supplier->telepon }}</td>
                   <td>
-                    {{-- <a href="/admin/content/edit/{{ $content->id }}">
+                    <a href="/admin/supplier/edit/{{ $supplier->id }}">
                     Edit
                     </a> |
-                    <a href="/admin/content/delete/{{ $content->id }}">
+                    <a href="/admin/supplier/delete/{{ $supplier->id }}">
                     Delete
-                    </a> --}}
+                    </a>
                   </td>
                 </tr>
                 @endforeach

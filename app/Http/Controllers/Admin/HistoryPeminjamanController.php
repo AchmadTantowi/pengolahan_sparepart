@@ -20,7 +20,9 @@ class HistoryPeminjamanController extends Controller
         if(Auth::user()->role != "mekanik"){
             abort(404);
         }
-        $lists = RequestSparepart::where('nik', Auth::user()->nik)->get();
+        $lists = RequestSparepart::where('nik', Auth::user()->nik)
+        ->groupBy('no_request')
+        ->get();
         return view('admin.history_peminjaman.index', compact('lists'));
     }
 

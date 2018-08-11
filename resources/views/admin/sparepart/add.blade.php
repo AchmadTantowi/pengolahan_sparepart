@@ -30,10 +30,10 @@
             <!-- /.box-header -->
             <div class="box-body pad">
               <div class="box-body">
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="exampleInputEmail1">Kode Part</label>
                 <input type="text" name="kode_part" class="form-control" id="exampleInputEmail1">
-                </div>
+                </div> --}}
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nama Part</label>
                     <input type="text" name="nama_part" class="form-control" id="exampleInputEmail1">
